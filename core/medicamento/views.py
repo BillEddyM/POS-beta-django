@@ -5,7 +5,12 @@ from .models import Medicamento, Categoria, Laboratorio
 from django.db.models import Q
 from .forms import MedicamentoForm, CategoriaForm, LaboratorioForm
 
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy  #PARA EL REDIRECCIONAMIENTO AUTOMATICO
+
+#imports necesarias para la api 
+from rest_framework import viewsets
+from .models import Medicamento
+from .serializers import MedicamentoSerializer
 
 class MedicamentoListView(ListView):
     model = Medicamento
@@ -94,3 +99,10 @@ class CategoriaDeleteView(DeleteView):
     model = Categoria
     template_name = 'categoria/categoria_confirm_delete.html' #direccion del template 
     success_url = reverse_lazy('categoria_list') #para redireccionar automaticamente reverse lazy 
+
+
+#   -----------------    vistas para las apis    ----------------------------------------------------
+
+class MedicamentoViewSet(viewsets.ModelViewSet):
+    queryset = Medicamento.objects.all()
+    serializer_class = MedicamentoSerializer
