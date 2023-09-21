@@ -37,9 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+        'customauthentication',
+    'rest_framework',
+    'rest_framework.authtoken',
     'home',
     'medicamento',
-    'rest_framework',
 
 ]
 
@@ -126,6 +128,12 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ],
 }
+
+AUTH_USER_MODEL = 'customauthentication.CustomUserAuthentication'
+LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'auth/login'
+LOGOUT_REDIRECT_URL = 'home'
+
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = ['static/', BASE_DIR]
