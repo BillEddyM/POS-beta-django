@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header bg-dark text-white">
+            <h3 class="mb-0">{% if laboratorio.pk %}Editar Laboratorio{% else %}Agregar Laboratorio{% endif %}</h3>
+          </div>
+          <div class="card-body">
+            <form method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button type="submit" class="btn btn-dark btn-block">Guardar</button>
+            </form>
+          </div>
+        </div>
+        <div class="mt-3">
+          <a href="{% url 'laboratorio_list' %}" class="btn btn-secondary">Volver al Listado de Laboratorios</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
