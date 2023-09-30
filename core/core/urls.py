@@ -17,6 +17,7 @@ urlpatterns = [
     path('auth/', include("customauthentication.urls")),
     path('', include("home.urls")),
     path('medicamentos/', include("medicamento.urls")),
+    path('clientes/', include("cliente.urls")),
     #api 
     path('api/', include(router.urls)),
     path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
