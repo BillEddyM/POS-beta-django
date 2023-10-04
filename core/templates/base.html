@@ -1,3 +1,4 @@
+
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -14,10 +15,9 @@
 <body>
     <header>
 
-        <a class="btn btn-danger float-right" href="{% url 'logout' %}">Salir</a>
         
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Mi Sitio</a>
+            <a class="navbar-brand" href="#">POS-Farmacia</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -25,26 +25,40 @@
                 <ul class="navbar-nav">
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'medicamento_list' %}">Medicamentos</a>
+                        <a class="nav-link" href="{% url 'medicamento_list' %}">
+                            <i class="fas fa-pills"></i> Medicamentos
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'laboratorio_list' %}">Laboratorios</a>
+                        <a class="nav-link" href="{% url 'laboratorio_list' %}">
+                            <i class="fas fa-flask"></i> Laboratorios
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'categoria_list' %}">Categorías</a>
+                        <a class="nav-link" href="{% url 'categoria_list' %}">
+                            <i class="fas fa-tags"></i> Categorías
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a>
+                        <a class="nav-link" href="{% url 'logout' %}">
+                            <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                        </a>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Iniciar Sesión</a>
+                        <a class="nav-link" href="{% url 'login' %}">
+                            <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                        </a>
                     </li>
                     {% endif %}
+
+                    
                 </ul>
             </div>
         </nav>
     </header>
+
+
 
     <main class="container mt-4">
         <!-- Aquí se mostrará el contenido principal de tus páginas -->

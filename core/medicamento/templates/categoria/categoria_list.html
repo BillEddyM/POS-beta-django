@@ -15,6 +15,8 @@
 <div class="container mt-2">
     <h1 class="text-center text-white">Listado de Categorías</h1>
     <a href="{% url 'categoria_create' %}" class="btn btn-success"><i class="fas fa-plus"></i> Agregar</a>
+
+    <div class="card shadow-lg p-3 mb-5 bg-body rounded">
     <table class="table table-striped" style="table-layout: fixed; width: 100%;">
       <thead>
         <tr>
@@ -36,6 +38,7 @@
         {% endfor %}
       </tbody>
     </table>
+  </div>
   
   </div>
 {% endblock %}

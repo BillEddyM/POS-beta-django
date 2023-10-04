@@ -8,7 +8,6 @@ from django.contrib.auth import authenticate, login
 
 
 # Create your views here.
-
 class CustomLoginView(LoginView):
     template_name = 'login.html'
     authentication_form = AuthenticationForm
@@ -16,6 +15,12 @@ class CustomLoginView(LoginView):
     def form_valid(self, form):
         login(self.request, form.get_user())
         return super().form_valid(form)
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.fields['username'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Nombre de usuario'})
+        form.fields['password'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Contraseña'})
+        return form
 
 
 class CustomLogin(APIView):
