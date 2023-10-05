@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'home',
     'medicamento',
     'cliente',
+    'django_sb_admin',
 
 ]
 

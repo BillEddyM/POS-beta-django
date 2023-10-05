@@ -28,6 +28,8 @@ class Medicamento(models.Model):
     fecha_expiracion = models.DateField()
     laboratorio = models.ForeignKey(Laboratorio, on_delete=models.CASCADE)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    
+    
 
     def __str__(self):
         return self.nombre
