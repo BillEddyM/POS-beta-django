@@ -1,6 +1,9 @@
 from django.urls import path
 from . import views
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 
 urlpatterns = [
@@ -16,4 +19,7 @@ urlpatterns = [
     path('categorias/nuevo/', views.CategoriaCreateView.as_view(), name='categoria_create'),
     path('categorias/<int:pk>/', views.CategoriaUpdateView.as_view(), name='categoria_update'),
     path('categorias/<int:pk>/eliminar/', views.CategoriaDeleteView.as_view(), name='categoria_delete'),
-]
+] 
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

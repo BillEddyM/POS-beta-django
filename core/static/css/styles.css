@@ -1,0 +1,10 @@
+.imagen-reducida {
+    max-width: 100px; /* Establece el ancho máximo de la imagen */
+    max-height: 100px; /* Establece la altura máxima de la imagen */
+    margin: 0; /* Opcional: ajusta el margen si es necesario */
+}
+
+.field {
+    display: inline-block;
+    width: 20%;
+}

@@ -21,7 +21,10 @@ class MedicamentoForm(forms.ModelForm):
             'nombre': forms.TextInput(attrs={'class': 'form-control'}),
             'descripcion': forms.Textarea(attrs={'class': 'form-control'}),
             'stock': forms.NumberInput(attrs={'class': 'form-control'}),
+            'precio_compra': forms.NumberInput(attrs={'class': 'form-control'}),
+            'precio_venta': forms.NumberInput(attrs={'class': 'form-control'}),
             'fecha_expiracion': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
             'laboratorio': forms.Select(attrs={'class': 'form-control'}),
             'categoria': forms.Select(attrs={'class': 'form-control'}),
         }
+        
