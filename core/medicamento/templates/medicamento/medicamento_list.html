@@ -1,17 +1,15 @@
 
 {% extends "base.html" %}
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 
 {% block content %}
 
 
 <div class="container mt-2">
     <h1 class="text-center text-dark">Listado de Medicamentos</h1>
-    <div style="margin: 20px;">
+    <div style="margin: 10px;">
         <a href="{% url 'medicamento_create' %}" class="btn btn-success"><i class="fas fa-plus"></i> Agregar</a> 
     </div>
-    <div class="highlight p-3 mb-3 bg-light rounded">
+    <div class="highlight p-2 mb-1 bg-light rounded">
       <form method="get" class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" name="q" placeholder="Buscar medicamento..." aria-label="Buscar">
         <button class="btn btn-outline-dark my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> Buscar</button>
@@ -44,7 +42,7 @@
                 <td>{{ medicamento.precio_compra }}</td>
                 <td>{{ medicamento.precio_venta }}</td>
                 <td>{{ medicamento.fecha_expiracion }}</td>
-                <td><img src="{{ medicamento.imagen.url }}" class="img-thumbnail" style="max-width: 50px;"></td>
+                 <!--<td><img src="s" class="img-thumbnail" style="max-width: 50px;"></td>-->
                 <td>{{ medicamento.laboratorio }}</td>
                 <td>{{ medicamento.categoria }}</td>
                 <td>
