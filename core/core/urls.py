@@ -3,17 +3,17 @@ from django.contrib import admin
 from django.urls import path, include
 
 from rest_framework.authtoken.views import obtain_auth_token
-
-
 #imports para la api 
 from rest_framework import routers
 from medicamento.views import MedicamentoViewSet
 
 from django.conf import settings
 from django.conf.urls.static import static
+from cliente.views import ClienteViewSet
 
 router = routers.DefaultRouter()
 router.register(r'medicamentos', MedicamentoViewSet)
+router.register(r'clientes', ClienteViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

@@ -8,12 +8,13 @@ class Venta(models.Model):
     total = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
-        return f'Venta {self.id} - {self.fecha}'
+        return f'Venta {self.id} - {self.fecha_venta}'
 
 class DetalleVenta(models.Model):
     venta = models.ForeignKey(Venta, on_delete=models.CASCADE)
     medicamento = models.ForeignKey(Medicamento, on_delete=models.CASCADE)
     cantidad = models.PositiveIntegerField()
+    precio_unitario = models.DecimalField(max_digits=10, decimal_places=2)
     sub_total = models.DecimalField(max_digits=10, decimal_places=2)
 
     def calcular_total(self):

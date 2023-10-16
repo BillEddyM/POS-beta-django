@@ -8,3 +8,9 @@
     display: inline-block;
     width: 20%;
 }
+
+.image-link {
+    display: block; /* Hacer que el enlace ocupe todo el espacio de la celda de la tabla */
+    text-decoration: none; /* Quitar la decoración de enlace (subrayado) */
+    cursor: pointer; /* Cambiar el cursor al estilo "pointer" al pasar sobre el enlace */
+}

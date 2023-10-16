@@ -106,3 +106,4 @@ class CategoriaDeleteView(DeleteView):
 class MedicamentoViewSet(viewsets.ModelViewSet):
     queryset = Medicamento.objects.all()
     serializer_class = MedicamentoSerializer
+
