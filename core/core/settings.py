@@ -22,6 +22,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'corsheaders',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -32,12 +33,29 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'home',
     'medicamento',
-    'cliente',
-    'venta'
+    'venta',
+    'cliente'
 
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000",  # Reemplaza esto con la URL de tu frontend
+    "http://127.0.0.1:8000",  # Reemplaza esto con la URL de tu frontend
+]
+
+CORS_ALLOW_METHODS = [
+    "GET",
+    "POST",
+    "PUT",
+    "DELETE",
+]
+
+CORS_ALLOW_HEADERS = [
+    "Content-Type",
+]
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',  # Debe estar antes de CommonMiddleware
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

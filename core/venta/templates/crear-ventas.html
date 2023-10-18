@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+{% block content %}
+    <script type="text/javascript">
+      window.onload = function() {
+    Formio.icons = 'fontawesome';
+    Formio.createForm(document.getElementById('formio'), {
+    components: [
+                        {
+                    "label": "Cliente",
+                    "widget": "choicesjs",
+                    "tableView": true,
+                    "validate": {
+                        "required": true
+                    },
+                    "dataSrc": "url",
+                    "data": {
+                        "url": "http://localhost:8000/api/clientes/",
+                        "headers": [
+                            {
+                                "key": "",
+                                "value": ""
+                            }
+                        ]
+                    },
+                    "valueProperty": "cliente_id",
+                    "dataType": "Object",
+                    "template": '{% verbatim %} {{item.cliente_id}} - {{ item.nombre }} {% endverbatim %}',
+                    "key": "cliente",
+                    "defaultValue": "",
+                    "type": "select",
+                    "selectValues": "results",
+                    "input": true
+                },
+
+         {
+            "label": "Data Grid",
+            "reorder": false,
+            "addAnotherPosition": "bottom",
+            "layoutFixed": true,
+            "enableRowGroups": false,
+            "initEmpty": false,
+            "tableView": true,
+            "defaultValue": [
+                {
+                    "select": "",
+                    "producto": "",
+                    "precio": "",
+                    "textField": "",
+                    "cantidad": "",
+                    "precioTotal": "",
+                    "precioUnitario": "",
+                    "especial": false
+                }
+            ],
+            "key": "detalles_venta",
+            "type": "datagrid",
+            "addAnother": "Agregar otro",
+            "input": true,
+            "components": [
+                {
+                    "label": "Medicamento:",
+                    "widget": "choicesjs",
+                    "tableView": true,
+                    "validate": {
+                        "required": true
+                    },
+                    "dataSrc": "url",
+                    "data": {
+                        "url": "http://localhost:8000/api/medicamentos/",
+                        "headers": [
+                            {
+                                "key": "",
+                                "value": ""
+                            }
+                        ]
+                    },
+                    "valueProperty": "medicamento_id",
+                    "dataType": "Object",
+                    "template": '{% verbatim %} {{item.medicamento_id}} {{ item.nombre }} {% endverbatim %}',
+                    "key": "producto",
+                    "type": "select",
+                    "selectValues": "results",
+                    "input": true
+                },
+                {
+                    "label": "Cantidad",
+                    "applyMaskOn": "change",
+                    "tableView": true,
+                    "validate": {
+                        "required": true
+                    },
+                    "key": "cantidad",
+                    "type": "textfield",
+                    "input": true
+                },
+                {
+                    "label": "Precio",
+                    "tableView": true,
+                    "key": "precioUnitario",
+                    "type": "textfield",
+                    "input": true,
+                    "refreshOn": "producto"
+                },
+                {
+                    "label": "Subtotal",
+                    "validate": {
+                        "required": true
+                    },
+                    "applyMaskOn": "change",
+                    "tableView": true,
+                    "key": "precioTotal",
+                    "type": "number",
+                    "input": true,
+                    "calculateValue": "try{value = row.cantidad * row.precioUnitario}catch(error){value=''}"
+                }
+            ]
+        },
+            {
+                "label": "Precio Total",
+                "mask": false,
+                "refreshOn": "data",
+                "inputFormat": "plain",
+                "key": "total",
+                "type": "number",
+                "input": true,
+                "calculateValue": "try{value = data.detalles_venta.reduce(function(total, row) {return total + row.precioTotal;}, 0);}catch(error){value = ''}"
+        },
+          {
+            "label": "+ Registrar venta",
+            "action": "event",
+            "event": "evento-enviar-form",
+            "showValidations": true,
+            "disableOnInvalid": true,
+            "tableView": false,
+            "key": "submit",
+            "type": "button",
+            "input": true
+        }
+
+  ]
+}).then(function(form) {
+  form.on('evento-enviar-form', function(submission) {
+    var json = JSON.stringify(form.data);
+    document.getElementById('guardar_json_txt').value = json;
+    document.getElementById('btn_aceptar_form').click();
+  });
+});
+    document.getElementById('form-django').action = "{% url 'crear_venta_post' %}";
+};
+    </script>
+    <div class="col-sm">
+        <h2>Crear nueva Venta</h2>
+        <form id="formio"></form>
+        {% include "form.generic.html" %}
+    </div>
+    <br>
+    <br>
+    <a class="btn btn-danger" href="/ventass">Volver a Lista de Ventas</a>
+    <br>
+    <br>
+{% endblock %}

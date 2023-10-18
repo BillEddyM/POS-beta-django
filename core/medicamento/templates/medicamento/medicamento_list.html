@@ -42,7 +42,14 @@
                 <td>{{ medicamento.precio_compra }}</td>
                 <td>{{ medicamento.precio_venta }}</td>
                 <td>{{ medicamento.fecha_expiracion }}</td>
-                 <!--<td><img src="s" class="img-thumbnail" style="max-width: 50px;"></td>-->
+                    <td> {% if medicamento.imagen %}
+                    <a href="#" class="image-link">
+                        <img src="{{ medicamento.imagen.url }}" class="img-thumbnail" style="max-width: 50px;">
+                    </a>
+                  {% else %}
+                      <p>No hay imagen disponible</p>
+                  {% endif %}
+                </td>
                 <td>{{ medicamento.laboratorio }}</td>
                 <td>{{ medicamento.categoria }}</td>
                 <td>

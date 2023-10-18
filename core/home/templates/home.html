@@ -2,6 +2,52 @@
 {% block title %}Home{% endblock %}
 {% block content %}
 
-<h1>hola mundo </h1>
 
+<div class="container mt-2">
+    <h1 class="text-center text-dark">Listado de Medicamentos</h1>
+    <div class="highlight p-2 mb-1 bg-light rounded">
+      <form method="get" class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" name="q" placeholder="Buscar medicamento..." aria-label="Buscar">
+        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> Buscar</button>
+      </form>
+    </div>
+    <div class="card shadow-lg p-3 mb-5 bg-body rounded">
+        <table class="table table-striped" style="table-layout: fixed; width: 100%;">
+          <thead >
+            <tr>
+              <th style="width: 34%;">Codigo</th>
+              <th style="width: 33%;">Nombre</th>
+              <th style="width: 34%;">descripcion</th>
+              <th style="width: 34%;">stock</th>
+              <th style="width: 34%;">Precio/Venta</th>
+              <th style="width: 34%;">Fecha Exp.</th>
+              <th style="width: 34%;" class="imagen-reducida">Img</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for medicamento in data.medicamentos %}
+              <tr>
+                <td>{{ medicamento.medicamento_id }}</td>
+                <td>{{ medicamento.nombre }}</td>
+                <td>{{ medicamento.descripcion }}</td>
+                <td>{{ medicamento.stock }}</td>
+                <td>{{ medicamento.precio_venta }}</td>
+                <td>{{ medicamento.fecha_expiracion }}</td>
+
+               <td> {% if medicamento.imagen %}
+                    <a href="#" class="image-link">
+                        <img src="{{ medicamento.imagen.url }}" class="img-thumbnail" style="max-width: 50px;">
+                    </a>
+                  {% else %}
+                      <p>No hay imagen disponible</p>
+                  {% endif %}
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </div>
+</div>
+
+  </div>
 {% endblock %}
