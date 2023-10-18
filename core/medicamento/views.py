@@ -11,8 +11,10 @@ from django.urls import reverse_lazy  #PARA EL REDIRECCIONAMIENTO AUTOMATICO
 from rest_framework import viewsets
 from .models import Medicamento
 from .serializers import MedicamentoSerializer
+from django.contrib.auth.mixins import PermissionRequiredMixin
 
-class MedicamentoListView(ListView):
+class MedicamentoListView(PermissionRequiredMixin, ListView):
+    permission_required = 'medicamento.view_medicamento'
     model = Medicamento
     template_name = 'medicamento/medicamento_list.html'
     context_object_name = 'medicamentos'
@@ -25,24 +27,28 @@ class MedicamentoListView(ListView):
         else:
             return Medicamento.objects.all()
 
-class MedicamentoCreateView(CreateView):
+class MedicamentoCreateView(PermissionRequiredMixin, CreateView):
+    permission_required = 'medicamento.add_medicamento'
     model = Medicamento
     form_class = MedicamentoForm
     template_name = 'medicamento/medicamento_form.html'
     success_url = reverse_lazy('medicamento_list')
 
-class MedicamentoUpdateView(UpdateView):
+class MedicamentoUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = 'medicamento.change_medicamento'
     model = Medicamento
     form_class = MedicamentoForm
     template_name = 'medicamento/medicamento_form.html'
     success_url = reverse_lazy('medicamento_list')
 
-class MedicamentoDeleteView(DeleteView):
+class MedicamentoDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = 'medicamento.delete_medicamento'
     model = Medicamento
     template_name = 'medicamento/medicamento_confirm_delete.html'
     success_url = reverse_lazy('medicamento_list')
 
-class LaboratorioListView(ListView):
+class LaboratorioListView(PermissionRequiredMixin, ListView):
+    permission_required = 'medicamento.view_laboratorio'
     model = Laboratorio
     template_name = 'laboratorio/laboratorio_list.html'
     context_object_name = 'laboratorios'
@@ -54,24 +60,28 @@ class LaboratorioListView(ListView):
         else:
             return Laboratorio.objects.all()
 
-class LaboratorioCreateView(CreateView):
+class LaboratorioCreateView(PermissionRequiredMixin, CreateView):
+    permission_required = 'medicamento.add_laboratorio'
     model = Laboratorio
     form_class = LaboratorioForm
     template_name = 'laboratorio/laboratorio_form.html'
     success_url = reverse_lazy('laboratorio_list')
 
-class LaboratorioUpdateView(UpdateView):
+class LaboratorioUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = 'medicamento.change_laboratorio'
     model = Laboratorio
     form_class = LaboratorioForm
     template_name = 'laboratorio/laboratorio_form.html'
     success_url = reverse_lazy('laboratorio_list')
 
-class LaboratorioDeleteView(DeleteView):
+class LaboratorioDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = 'medicamento.delete_laboratorio'
     model = Laboratorio
     template_name = 'laboratorio/laboratorio_confirm_delete.html'
     success_url = reverse_lazy('laboratorio_list')
 
-class CategoriaListView(ListView):
+class CategoriaListView(PermissionRequiredMixin, ListView):
+    permission_required = 'medicamento.view_categoria'
     model = Categoria
     template_name = 'categoria/categoria_list.html'
     context_object_name = 'categorias'
@@ -83,22 +93,25 @@ class CategoriaListView(ListView):
         else:
             return Categoria.objects.all()
 
-class CategoriaCreateView(CreateView):
+class CategoriaCreateView(PermissionRequiredMixin, CreateView):
+    permission_required = 'medicamento.add_categoria'
     model = Categoria
     form_class = CategoriaForm
     template_name = 'categoria/categoria_form.html'
     success_url = reverse_lazy('categoria_list')
 
-class CategoriaUpdateView(UpdateView):
+class CategoriaUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = 'medicamento.change_categoria'
     model = Categoria
     form_class = CategoriaForm
     template_name = 'categoria/categoria_form.html'
     success_url = reverse_lazy('categoria_list')
 
-class CategoriaDeleteView(DeleteView):
+class CategoriaDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = 'medicamento.delete_categoria'
     model = Categoria
-    template_name = 'categoria/categoria_confirm_delete.html' #direccion del template 
-    success_url = reverse_lazy('categoria_list') #para redireccionar automaticamente reverse lazy 
+    template_name = 'categoria/categoria_confirm_delete.html'
+    success_url = reverse_lazy('categoria_list')
 
 
 #   -----------------    vistas para las apis    ----------------------------------------------------

@@ -24,13 +24,18 @@
 
         
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">POS-Farmacia</a>
+            <a class="navbar-brand" href="{% url 'home' %}">POS-Farmacia</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav mr-auto"> <!-- Agrega la clase 'mr-auto' para que los elementos se alineen a la izquierda -->
                     {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'cliente_list' %}">
+                            <i class="fas fa-users"></i> Clientes
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'medicamento_list' %}">
                             <i class="fas fa-pills"></i> Medicamentos
@@ -48,14 +53,16 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'listar_ventas' %}">
-                            <i class="fas fa-tags"></i> Ver ventas
+                            <i class="fas fa-shopping-cart"></i> Ver ventas
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'venta_crear_venta' %}">
-                            <i class="fas fa-tags"></i> Nueva Venta
+                            <i class="fas fa-cart-plus"></i> Nueva Venta
                         </a>
                     </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto"> <!-- Agrega la clase 'ml-auto' para que los elementos se alineen a la derecha -->
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">
                             <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
@@ -68,11 +75,10 @@
                         </a>
                     </li>
                     {% endif %}
-
-                    
                 </ul>
             </div>
         </nav>
+        
     </header>
 
 
@@ -83,8 +89,7 @@
     </main>
 
     <footer class="bg-light text-center py-3">
-        <!-- Aquí puedes incluir el pie de página de tu sitio -->
-        <p>Derechos de autor &copy; {{ year }} Tu Nombre</p>
+        <p>Derechos de autor UMG - DEV - WEB </p>
     </footer>
 
     <!-- Agrega los scripts de Bootstrap al final del documento -->

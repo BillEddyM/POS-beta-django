@@ -13,7 +13,7 @@
 <div class="container mt-2">
     <h1 class="text-center text-dark">Listado de Cliente</h1>
     <div style="margin: 20px;">
-        <a href="{% url 'medicamento_create' %}" class="btn btn-success"><i class="fas fa-plus"></i>Agregar</a> 
+        <a href="{% url 'cliente_create' %}" class="btn btn-success"><i class="fas fa-plus"></i>Agregar</a> 
     </div>
     <div class="card shadow-lg p-3 mb-5 bg-body rounded">
         <table class="table table-striped" style="table-layout: fixed; width: 100%;">
@@ -24,13 +24,14 @@
 
               <th style="width: 34%;">Nit</th>
               <th style="width: 34%;">Telefono</th>
+              <th style="width: 34%;">Acciones</th>
             </tr>
           </thead>
           <tbody>
-            {% for cliente in cliente %}
+            {% for cliente in clientes %}
               <tr>
                 <td>{{ cliente.cliente_id }}</td>
-                <td>{{ cliente.nombre }} {{ cliente.apellido }}</td>
+                <td>{{ cliente.nombre }}  {{ cliente.apellido }}</td>
                 <td>{{ cliente.nit}}</td>
                 <td>{{ cliente.telefono }}</td>
                 <td>

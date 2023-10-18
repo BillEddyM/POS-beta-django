@@ -5,8 +5,8 @@ from django.urls import path
 from .views import HomeTemplateView
 from home import views
 
-urlpatterns = [
-    path('', views.ver_home, name='home'),
-]
 
+urlpatterns = [
+    path('', HomeTemplateView.as_view(), name='home'),
+]
 
