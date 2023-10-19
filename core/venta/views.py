@@ -69,7 +69,13 @@ def crear_venta_post(request):
     for d in detalles:
         print(d)
         detalle = DetalleVenta()
-        detalle.medicamento = Medicamento.objects.get(medicamento_id=d['producto'])
+        id_medicamento = d['producto']
+        print("---------MEDICAMENTO A VENDER ------------")
+        print(id_medicamento)
+        id_medicamento = id_medicamento['medicamento_id']
+        print(id_medicamento)
+        print("---------------------")
+        detalle.medicamento = Medicamento.objects.get(medicamento_id=(id_medicamento))
         detalle.cantidad = d['cantidad']
         detalle.precio_unitario = d['precioUnitario']
         detalle.sub_total = d['precioTotal']

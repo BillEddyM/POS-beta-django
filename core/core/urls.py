@@ -22,7 +22,8 @@ urlpatterns = [
     path('inventario/', include("medicamento.urls")),
     path('clientes/', include("cliente.urls")),
     path('ventas/', include("venta.urls")),
-    #api 
+    path('proveedores/', include("proveedor.urls")),
+    #api
     path('api/', include(router.urls)),
     path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
     

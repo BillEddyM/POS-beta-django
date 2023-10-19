@@ -10,7 +10,7 @@ from rest_framework import serializers
 
 class ClienteListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = Cliente
-    template_name = 'cliente/cliente_list.html'
+    template_name = 'cliente/proveedor_list.html'
     context_object_name = 'clientes'
     login_url = '/login/'
     permission_required = 'cliente.view_cliente'
@@ -25,7 +25,7 @@ class ClienteListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
 class ClienteCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Cliente
     form_class = ClienteForm
-    template_name = 'cliente/cliente_form.html'
+    template_name = 'cliente/proveedor_form.html'
     success_url = reverse_lazy('cliente_list')
     login_url = '/login/'
     permission_required = 'cliente.add_cliente'
@@ -33,14 +33,14 @@ class ClienteCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView)
 class ClienteUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Cliente
     form_class = ClienteForm
-    template_name = 'cliente/cliente_form.html'
+    template_name = 'cliente/proveedor_form.html'
     success_url = reverse_lazy('cliente_list')
     login_url = '/login/'
     permission_required = 'cliente.change_cliente'
 
 class ClienteDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Cliente
-    template_name = 'cliente/cliente_confirm_delete.html' #direccion del template 
+    template_name = 'cliente/proveedor_confirm_delete.html' #direccion del template
     success_url = reverse_lazy('cliente_list') #para redireccionar automaticamente reverse lazy 
     login_url = '/login/'
     permission_required = 'cliente.delete_cliente'

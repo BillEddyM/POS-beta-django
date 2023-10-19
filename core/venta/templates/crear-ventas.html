@@ -74,7 +74,6 @@
                             }
                         ]
                     },
-                    "valueProperty": "medicamento_id",
                     "dataType": "Object",
                     "template": '{% verbatim %} {{item.medicamento_id}} {{ item.nombre }} {% endverbatim %}',
                     "key": "producto",
@@ -94,12 +93,17 @@
                     "input": true
                 },
                 {
-                    "label": "Precio",
+                    "label": "Precio Unitario",
+                    "validate": {
+                        "required": true
+                    },
+                    "disabled": true,
+                    "refreshOn": "data",
                     "tableView": true,
                     "key": "precioUnitario",
-                    "type": "textfield",
-                    "input": true,
-                    "refreshOn": "producto"
+                    "type": "number",
+                    "calculateValue": "value = '0';console.log(row.producto);try{value = row.producto.precio_venta}catch(error){value='0'}",
+                    "input": true
                 },
                 {
                     "label": "Subtotal",

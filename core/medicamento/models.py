@@ -1,5 +1,8 @@
 from django.db import models
 
+from proveedor.models import Proveedor
+
+
 class Laboratorio(models.Model):
     laboratorio_id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=255)
@@ -30,6 +33,7 @@ class Medicamento(models.Model):
     fecha_expiracion = models.DateField()
     laboratorio = models.ForeignKey(Laboratorio, on_delete=models.CASCADE)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    proveedor = models.ForeignKey(Proveedor, on_delete=models.CASCADE)
     imagen = models.ImageField(upload_to='imagenes', null=True, blank=True)
 
 
