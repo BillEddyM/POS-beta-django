@@ -23,7 +23,7 @@ class MedicamentoListView(PermissionRequiredMixin, ListView):
     def get_queryset(self):
         query = self.request.GET.get('q')
         if query:
-            return Medicamento.objects.filter(Q(nombre__icontains=query) | Q(medicamento_id__icontains=query))
+            return Medicamento.objects.filter(Q(nombre__icontains=query) | Q(medicamento_id__icontains=query)  | Q(categoria__icontains=query) | Q(proveedor__icontains=query) | Q(laboratorio__icontains=query))
         else:
             return Medicamento.objects.all()
 
@@ -53,7 +53,7 @@ class LaboratorioListView(PermissionRequiredMixin, ListView):
     template_name = 'laboratorio/laboratorio_list.html'
     context_object_name = 'laboratorios'
     
-    def get_queryset(self):
+    def get_queryset(self): #para la busqueda 
         query = self.request.GET.get('q')
         if query:
             return Laboratorio.objects.filter(Q(nombre__icontains=query) | Q(laboratorio_id__icontains=query))
@@ -65,7 +65,7 @@ class LaboratorioCreateView(PermissionRequiredMixin, CreateView):
     model = Laboratorio
     form_class = LaboratorioForm
     template_name = 'laboratorio/laboratorio_form.html'
-    success_url = reverse_lazy('laboratorio_list')
+    success_url = reverse_lazy('laboratorio_list') #para regresar al listado 
 
 class LaboratorioUpdateView(PermissionRequiredMixin, UpdateView):
     permission_required = 'medicamento.change_laboratorio'

@@ -22,7 +22,7 @@
               <th style="width: 34%;">Codigo</th>
               <th style="width: 33%;">Nombre</th>
               <th style="width: 34%;">Nit</th>
-              <th style="width: 34%;">Tipo de producto</th>
+              <th style="width: 34%;">Telefono</th>
                 <th style="width: 34%;">Acciones</th>
             </tr>
           </thead>
@@ -32,7 +32,7 @@
                 <td>{{ proveedor.proveedor_id }}</td>
                 <td>{{ proveedor.nombre }}</td>
                 <td>{{ proveedor.nit}}</td>
-                <td>{{ proveedor.tipo_producto }}</td>
+                <td>{{ proveedor.telefono }}</td>
                 <td>
                   <a href="{% url 'proveedor_update' proveedor.pk %}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                   <a href="{% url 'proveedor_delete' proveedor.pk %}" class="btn btn-danger"><i class="fas fa-trash"></i></a>

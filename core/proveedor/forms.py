@@ -4,7 +4,9 @@ from .models import Proveedor
 class ProveedorForm(forms.ModelForm):
     class Meta:
         model = Proveedor
-        fields = ['proveedor_id',
-                   'nombre',
-                    'nit',
-                    'tipo_producto']
+        fields = '__all__'
+        widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
+            'nit': forms.TextInput(attrs={'class': 'form-control'}),
+            'telefono': forms.TextInput(attrs={'class': 'form-control'}),
+        }
