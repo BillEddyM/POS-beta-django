@@ -23,7 +23,7 @@ class MedicamentoListView(PermissionRequiredMixin, ListView):
     def get_queryset(self):
         query = self.request.GET.get('q')
         if query:
-            return Medicamento.objects.filter(Q(nombre__icontains=query) | Q(medicamento_id__icontains=query)  | Q(categoria__icontains=query) | Q(proveedor__icontains=query) | Q(laboratorio__icontains=query))
+            return Medicamento.objects.filter(Q(nombre__icontains=query) | Q(medicamento_id__icontains=query))
         else:
             return Medicamento.objects.all()
 

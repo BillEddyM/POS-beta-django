@@ -28,10 +28,8 @@
         <td>{{ laboratorio.laboratorio_id }}</td>
         <td>{{ laboratorio.nombre }}</td>
         <td>
-          <a href="{% url 'laboratorio_update' laboratorio.pk %}" class="btn btn-primary"><i class="fas fa-edit"></i>
-            Editar</a>
-          <a href="{% url 'laboratorio_delete' laboratorio.pk %}" class="btn btn-danger"><i class="fas fa-trash"></i>
-            Eliminar</a>
+          <a href="{% url 'laboratorio_update' laboratorio.pk %}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+          <a href="{% url 'laboratorio_delete' laboratorio.pk %}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
         </td>
       </tr>
       {% endfor %}

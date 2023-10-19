@@ -31,8 +31,8 @@
             <td>{{ categoria.categoria_id }}</td>
             <td>{{ categoria.nombre }}</td>
             <td>
-              <a href="{% url 'categoria_update' categoria.pk %}" class="btn btn-primary"><i class="fas fa-edit"></i> Editar</a>
-              <a href="{% url 'categoria_delete' categoria.pk %}" class="btn btn-danger"><i class="fas fa-trash"></i> Eliminar</a>
+              <a href="{% url 'categoria_update' categoria.pk %}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+              <a href="{% url 'categoria_delete' categoria.pk %}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
             </td>
           </tr>
         {% endfor %}

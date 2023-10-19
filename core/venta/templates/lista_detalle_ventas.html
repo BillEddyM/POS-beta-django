@@ -17,7 +17,7 @@
     <thead>
       <tr>
         <th style="width: 33%">Cod Prod.</th>
-        <th style="width: 33%">Descripcion</th>
+        <th style="width: 33%">Medicamento</th>
         <th style="width: 33%">Cant.</th>
         <th style="width: 34%">Precio Unit.</th>
         <th style="width: 34%">Subtotal</th>
@@ -29,8 +29,8 @@
         <td>{{ v.id }}</td>
         <td>{{ v.medicamento.nombre }}</td>
         <td>{{ v.cantidad}}</td>
-        <td>{{ v.sub_total}}</td>
         <td>{{ v.precio_unitario}}</td>
+        <td>{{ v.sub_total}}</td>
       </tr>
       {% endfor %}
     </tbody>

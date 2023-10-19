@@ -23,13 +23,13 @@
     <header>
 
         
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 p-3">
             <a class="navbar-brand" href="{% url 'home' %}">POS-Farmacia</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mr-auto"> <!-- Agrega la clase 'mr-auto' para que los elementos se alineen a la izquierda -->
+                <ul class="navbar-nav "> 
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'cliente_list' %}">
@@ -53,10 +53,10 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'proveedor_list' %}">
-                            <i class="fas fa-tags"></i> Proveedores
+                            <i class="fas fa-truck"></i> Proveedores
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item m-r-3">
                         <a class="nav-link" href="{% url 'listar_ventas' %}">
                             <i class="fas fa-shopping-cart"></i> Ver ventas
                         </a>
@@ -67,7 +67,7 @@
                         </a>
                     </li>
                     </ul>
-                    <ul class="navbar-nav ml-auto"> <!-- Agrega la clase 'ml-auto' para que los elementos se alineen a la derecha -->
+                    <ul class="navbar-nav ml-auto"> 
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">
                             <i class="fas fa-sign-out-alt"></i> Cerrar Sesión

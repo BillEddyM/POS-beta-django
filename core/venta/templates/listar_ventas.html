@@ -27,7 +27,7 @@
       {% for v in data.ventas %}
       <tr>
         <td>{{ v.id }}</td>
-        <td>{{ v.cliente.cliente_id }} - {{v.cliente.nombre}}</td>
+        <td>{{ v.cliente.cliente_id }} - {{v.cliente.nombre}} - {{v.cliente.nit}}  </td>
         <td>{{ v.total}}</td>
         <td>{{ v.fecha_venta}}</td>
         <td>

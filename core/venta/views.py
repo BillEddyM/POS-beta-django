@@ -42,7 +42,7 @@ def crear_venta_post(request):
     print(request.POST)
     detalles = data['detalles_venta']
     for d in detalles:
-        medicamento = Medicamento.objects.get(medicamento_id=d['producto'])
+        medicamento = Medicamento.objects.get(medicamento_id=d['producto']['medicamento_id'])
         if medicamento.stock < int(d['cantidad']):
             return render(request, "error.html", {"mensaje": "No hay suficiente stock para realizar la venta"})
     venta = Venta()
