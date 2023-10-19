@@ -1,0 +1,49 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-3">
+  <h1 class="text-center text-dark">Clientes</h1>
+  <a href="{% url 'cliente_create' %}" class="btn btn-success"><i class="fas fa-plus"></i> Agregar</a>
+</div>
+
+<div class="highlight p-3 mb-3 bg-light rounded">
+  <form method="get" class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="search" name="q" placeholder="Buscar cliente..." aria-label="Buscar" />
+    <button class="btn btn-outline-dark my-2 my-sm-0" type="submit"> <i class="fas fa-search"></i> Buscar </button>
+  </form>
+</div>
+
+<div class="card shadow-lg p-3 mb-5 bg-body rounded">
+        <table class="table table-striped" style="table-layout: fixed; width: 100%;">
+          <thead >
+            <tr>
+              <th style="width: 34%;">Codigo</th>
+              <th style="width: 33%;">Nombre</th>
+
+              <th style="width: 34%;">Nit</th>
+              <th style="width: 34%;">Telefono</th>
+              <th style="width: 34%;">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for cliente in clientes %}
+              <tr>
+                <td>{{ cliente.cliente_id }}</td>
+                <td>{{ cliente.nombre }}  {{ cliente.apellido }}</td>
+                <td>{{ cliente.nit}}</td>
+                <td>{{ cliente.telefono }}</td>
+                <td>
+                  <a href="{% url 'cliente_update' cliente.pk %}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                  <a href="{% url 'cliente_delete' cliente.pk %}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </div>
+</div>
+  
+  </div>
+{% endblock %}

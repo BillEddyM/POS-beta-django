@@ -1,0 +1,125 @@
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}POS-Farma{% endblock %}</title>
+    <!-- Agrega el enlace al archivo CSS de Bootstrap -->
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.form.io/js/formio.embed.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/formio.full.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/css-correcciones-libreria.css' %}">
+    {% block extra_style %}
+
+    {% endblock %}
+</head>
+<body>
+    <header>
+
+        
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 p-3">
+            <a class="navbar-brand" href="{% url 'home' %}">POS-Farmacia</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav "> 
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'cliente_list' %}">
+                            <i class="fas fa-users"></i> Clientes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'medicamento_list' %}">
+                            <i class="fas fa-pills"></i> Medicamentos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'laboratorio_list' %}">
+                            <i class="fas fa-flask"></i> Laboratorios
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'categoria_list' %}">
+                            <i class="fas fa-tags"></i> Categorías
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'proveedor_list' %}">
+                            <i class="fas fa-truck"></i> Proveedores
+                        </a>
+                    </li>
+                    <li class="nav-item m-r-3">
+                        <a class="nav-link" href="{% url 'listar_ventas' %}">
+                            <i class="fas fa-shopping-cart"></i> Ver ventas
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'venta_crear_venta' %}">
+                            <i class="fas fa-cart-plus"></i> Nueva Venta
+                        </a>
+                    </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto"> 
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">
+                            <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">
+                            <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+        
+    </header>
+
+
+
+    <main class="container mt-4">
+        <!-- Aquí se mostrará el contenido principal de tus páginas -->
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="bg-light text-center py-3">
+        <p>Derechos de autor UMG - DEV - WEB </p>
+    </footer>
+
+    <!-- Agrega los scripts de Bootstrap al final del documento -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $(".image-link").on("click", function(e) {
+            e.preventDefault();
+            var imageUrl = $(this).find("img").attr("src");
+            $("#image-modal").find("img").attr("src", imageUrl);
+            $("#image-modal").modal("show");
+        });
+    });
+    </script>
+</body>
+<!-- Modal para mostrar la imagen agrandada -->
+<div class="modal fade" id="image-modal" tabindex="-1" role="dialog" aria-labelledby="image-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="" alt="Agrandar imagen" style="max-width: 100%;">
+            </div>
+        </div>
+    </div>
+</div>
+</html>
+

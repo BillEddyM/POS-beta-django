@@ -1,0 +1,45 @@
+
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-1">
+    <h1 class="text-center text-dark">Categorías</h1>
+    <a href="{% url 'categoria_create' %}" class="btn btn-success"><i class="fas fa-plus"></i> Agregar</a>
+</div>
+
+<div class="highlight p-3 mb-3 bg-light rounded">
+  <form method="get" class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="search" name="q" placeholder="Buscar categoría..." aria-label="Buscar">
+    <button class="btn btn-outline-dark my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> Buscar</button>
+  </form>
+</div>
+
+    <div class="card shadow-lg p-3 mb-5 bg-body rounded">
+    <table class="table table-striped" style="table-layout: fixed; width: 100%;">
+      <thead>
+        <tr>
+          <th style="width: 33%;">Codigo</th>
+          <th style="width: 33%;">Nombre</th>
+          <th style="width: 34%;">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for categoria in categorias %}
+          <tr>
+            <td>{{ categoria.categoria_id }}</td>
+            <td>{{ categoria.nombre }}</td>
+            <td>
+              <a href="{% url 'categoria_update' categoria.pk %}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+              <a href="{% url 'categoria_delete' categoria.pk %}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  
+  </div>
+{% endblock %}
+

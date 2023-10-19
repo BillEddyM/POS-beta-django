@@ -1,0 +1,17 @@
+.imagen-reducida {
+    max-width: 100px; /* Establece el ancho máximo de la imagen */
+    max-height: 100px; /* Establece la altura máxima de la imagen */
+    margin: 0; /* Opcional: ajusta el margen si es necesario */
+}
+
+.field {
+    display: inline-block;
+    width: 20%;
+}
+
+.image-link {
+    display: block; /* Hacer que el enlace ocupe todo el espacio de la celda de la tabla */
+    text-decoration: none; /* Quitar la decoración de enlace (subrayado) */
+    cursor: pointer; /* Cambiar el cursor al estilo "pointer" al pasar sobre el enlace */
+}
+

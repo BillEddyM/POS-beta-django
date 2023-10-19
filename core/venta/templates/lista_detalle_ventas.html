@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-3">
+  <h1 class="text-center text-dark">Detalles de venta</h1>
+  <a href="{% url 'listar_ventas' %}" class="btn btn-success"> Volver a lista de ventas</a>
+</div>
+
+<div class="highlight p-3 mb-3 bg-light rounded">
+  <form method="get" class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="search" name="q" placeholder="Buscar venta..." aria-label="Buscar" />
+    <button class="btn btn-outline-dark my-2 my-sm-0" type="submit"> <i class="fas fa-search"></i> Buscar </button>
+  </form>
+</div>
+
+<div class="card shadow-lg p-3 mb-5 bg-body rounded">
+  <table class="table table-striped" style="table-layout: fixed; width: 100%">
+    <thead>
+      <tr>
+        <th style="width: 33%">Cod Prod.</th>
+        <th style="width: 33%">Medicamento</th>
+        <th style="width: 33%">Cant.</th>
+        <th style="width: 34%">Precio Unit.</th>
+        <th style="width: 34%">Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for v in data.detalles %}
+      <tr>
+        <td>{{ v.id }}</td>
+        <td>{{ v.medicamento.nombre }}</td>
+        <td>{{ v.cantidad}}</td>
+        <td>{{ v.precio_unitario}}</td>
+        <td>{{ v.sub_total}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+</div>
+{% endblock %}
