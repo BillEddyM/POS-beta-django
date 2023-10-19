@@ -34,7 +34,8 @@ INSTALLED_APPS = [
     'home',
     'medicamento',
     'venta',
-    'cliente'
+    'cliente',
+    'proveedor'
 
 ]
 

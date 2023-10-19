@@ -26,6 +26,7 @@
               <th style="width: 34%;">Precio/Compra</th>
               <th style="width: 34%;">Precio/Venta</th>
               <th style="width: 34%;">Fecha Exp.</th>
+              <th style="width: 34%;">Proveedor</th>
               <th style="width: 34%;" class="imagen-reducida">Img</th>
               <th style="width: 34%;">Laboratorio</th>
               <th style="width: 34%;">Categoria</th>
@@ -42,6 +43,7 @@
                 <td>{{ medicamento.precio_compra }}</td>
                 <td>{{ medicamento.precio_venta }}</td>
                 <td>{{ medicamento.fecha_expiracion }}</td>
+                <td>{{ medicamento.proveedor.nombre }}</td>
                     <td> {% if medicamento.imagen %}
                     <a href="#" class="image-link">
                         <img src="{{ medicamento.imagen.url }}" class="img-thumbnail" style="max-width: 50px;">
